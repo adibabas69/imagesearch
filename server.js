@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 //connection
-mongoose.connect("mongodb://ammar:4444@ds033066.mlab.com:33066/searchterm").then(
+mongoose.connect("mongodb://imagesearch:imagesearch@ds151707.mlab.com:51707/imagesearch").then(
   () => { console.log("connected") },
   err => { console.log(err) }
 );
@@ -53,11 +53,11 @@ app.get('/api/imagesearch/:searchVal*',function (req,res,next)
         
     
  
-qwant.search("images", { query: searchVal, count: 10, offset : offset,language: "english" }, function(err, data){
+qwant.search("images", { query: searchVal, count: 5, offset : offset,language: "english" }, function(err, data){
     var mydata=[];
     var offset = req.query.offset;
   
-  for(var i=0;i<10;i++)
+  for(var i=0;i<5;i++)
   {
     mydata.push({
     url :data.data.result.items[i].url,
